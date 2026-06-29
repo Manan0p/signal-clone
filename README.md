@@ -2,7 +2,7 @@
 
 A pixel-perfect clone of the **Signal Messenger** application featuring a Next.js (TypeScript) frontend and a FastAPI (Python) backend connected via REST APIs and WebSockets for real-time secure messaging.
 
-**🌐 Live Demo:** (Set your deployment link here)
+**🌐 Live Demo:** https://signal-clone-nu.vercel.app/
 
 ---
 
