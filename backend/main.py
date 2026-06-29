@@ -17,6 +17,7 @@ if sys.platform == 'win32':
     except ImportError:
         pass
 
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
@@ -32,9 +33,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Signal Clone API", version="1.0.0", lifespan=lifespan)
 
+# Allow configured origins (comma-separated in env) or default to localhost
+cors_origins_env = os.getenv("CORS_ALLOWED_ORIGINS", "")
+if cors_origins_env:
+    allowed_origins = [origin.strip() for origin in cors_origins_env.split(",") if origin.strip()]
+else:
+    allowed_origins = ["http://localhost:3000", "http://127.0.0.1:3000"]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
