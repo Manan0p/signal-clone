@@ -23,7 +23,7 @@ function formatTime(dateString: string | null) {
 
 export function ConversationItem({ conversation, currentUserId, isActive, onClick }: ConversationItemProps) {
   let displayName = conversation.name;
-  let avatarColor = conversation.avatar_color;
+  let avatarColor: string | null | undefined = conversation.avatar_color;
   let otherUser: User | undefined = undefined;
 
   if (conversation.type === 'direct') {

@@ -72,6 +72,8 @@ export function useWebSocket() {
       }
     });
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, [user, activeConversationId, addMessage, updateLastMessage, incrementUnread, updateUserOnlineStatus, updateMessageStatus, setTyping, fetchConversations]);
 }

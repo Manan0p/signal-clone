@@ -24,7 +24,7 @@ export function ChatHeader({ conversation, currentUserId, onBack }: ChatHeaderPr
   const [showContactInfo, setShowContactInfo] = useState(false);
 
   let displayName = conversation.name;
-  let avatarColor = conversation.avatar_color;
+  let avatarColor: string | null | undefined = conversation.avatar_color;
   let subtitle = '';
   let otherUser: User | undefined = undefined;
 
