@@ -11,11 +11,19 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
   const router = useRouter();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Initialize auth from storage on mount
+  // Initialize auth from storage and setup window resize listener
   useEffect(() => {
     initFromStorage();
     setMounted(true);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, [initFromStorage]);
 
   // Redirect if not logged in
@@ -36,8 +44,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     );
   }
 
-  // Mobile layout detection: if we are on a conversation page, hide sidebar on mobile
-  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
   const isConversationPage = pathname !== '/';
 
   return (

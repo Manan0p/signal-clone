@@ -61,7 +61,7 @@ export function ChatHeader({ conversation, currentUserId, onBack }: ChatHeaderPr
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         {onBack && (
-          <button onClick={onBack} style={{ marginRight: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, borderRadius: '50%', backgroundColor: 'transparent' }} className="hover:bg-[var(--bg-hover)] transition-colors" title="Close chat">
+          <button onClick={onBack} style={{ marginRight: 4, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 8, borderRadius: '50%', backgroundColor: 'transparent' }} className="back-button-desktop-hide hover:bg-[var(--bg-hover)] transition-colors" title="Close chat">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <line x1="19" y1="12" x2="5" y2="12" />
               <polyline points="12 19 5 12 12 5" />

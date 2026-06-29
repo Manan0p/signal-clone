@@ -228,3 +228,9 @@ input::placeholder, textarea::placeholder {
   border-top: 7px solid transparent;
   border-bottom: 0;
 }
+
+@media (min-width: 769px) {
+  .back-button-desktop-hide {
+    display: none !important;
+  }
+}
