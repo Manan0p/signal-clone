@@ -26,7 +26,8 @@ class WebSocketManager {
     if (!this.userId || !this.token) return;
     if (this.ws?.readyState === WebSocket.OPEN) return;
 
-    const url = `${WS_URL}/ws/${this.userId}?token=${this.token}`;
+    const cleanWsUrl = WS_URL.replace(/\/+$/, '');
+    const url = `${cleanWsUrl}/ws/${this.userId}?token=${this.token}`;
     this.ws = new WebSocket(url);
 
     this.ws.onopen = () => {
